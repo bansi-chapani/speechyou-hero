@@ -175,7 +175,24 @@ export function CtaWithTextMarquee() {
           className="relative h-[380px] sm:h-[460px] lg:h-[560px] flex items-center justify-center"
         >
           <div className="relative w-full h-full">
-            <VerticalMarquee speed={36} pauseOnHover className="h-full">
+            {/* The ends dissolve with a MASK, not with two opaque gradient
+                overlays. The section behind is itself a gradient
+                (#14161d -> #0B0C10), so overlays painted in fixed colours can
+                only match it at two heights — everywhere else they sat on it
+                as a visibly lighter block (measured rgb(20,22,29) over
+                rgb(17,18,24) at the top edge). Masking removes the pixels
+                instead of painting over them, so whatever the section
+                gradient does underneath, the fade is exact. */}
+            <div
+              className="w-full h-full"
+              style={{
+                WebkitMaskImage:
+                  'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.35) 12%, #000 34%, #000 66%, rgba(0,0,0,0.35) 88%, transparent 100%)',
+                maskImage:
+                  'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.35) 12%, #000 34%, #000 66%, rgba(0,0,0,0.35) 88%, transparent 100%)',
+              }}
+            >
+              <VerticalMarquee speed={36} pauseOnHover className="h-full">
               {LANES.map((lane) => (
                 <div
                   key={lane}
@@ -185,13 +202,7 @@ export function CtaWithTextMarquee() {
                 </div>
               ))}
             </VerticalMarquee>
-
-            {/* edge fades — same two-stop ramp as the reference, and the same
-                proportion of the container height (reference: h-64 of 700px =
-                37%; here h-36/h-44/h-52 tracks 380/460/560px), retuned to this
-                section's gradient so the ends dissolve into it */}
-            <div className="pointer-events-none absolute top-0 left-0 right-0 h-36 sm:h-44 lg:h-52 bg-gradient-to-b from-[#14161d] via-[#14161d]/60 to-transparent z-10" />
-            <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-36 sm:h-44 lg:h-52 bg-gradient-to-t from-[#0B0C10] via-[#0B0C10]/60 to-transparent z-10" />
+            </div>
           </div>
         </div>
       </div>

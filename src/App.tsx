@@ -4,6 +4,7 @@ import HeroScore from './HeroScore';
 import { TextAnimate } from '@/components/ui/text-animate';
 import './hero-score.css';
 import { LiquidMetalButton } from '@/components/ui/liquid-metal-button';
+import { CtaWithTextMarquee } from '@/components/ui/cta-with-text-marquee';
 
 const BG_VIDEO =
   'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260511_230229_7c9bc431-46cf-489a-948d-e8144d8eb5d4.mp4';
@@ -117,6 +118,8 @@ export default function App() {
       </section>
 
       <ReportSections />
+
+      <CtaWithTextMarquee />
 
       {/* Persistent booking CTA. Between the hero CTA and the plan CTA at the
           very bottom there is a ~4,500px stretch with no way to book, which is

@@ -397,21 +397,31 @@ const TextAnimateBase = ({
         {...props}
       >
         {accessible && <span className="sr-only">{children}</span>}
-        {segments.map((segment, i) => (
-          <motion.span
-            key={`${by}-${segment}-${i}`}
-            variants={finalVariants.item}
-            custom={i * staggerTimings[by]}
-            className={cn(
-              by === "line" ? "block" : "inline-block whitespace-pre",
-              by === "character" && "",
-              segmentClassName
-            )}
-            aria-hidden={accessible ? true : undefined}
-          >
-            {segment}
-          </motion.span>
-        ))}
+        {segments.map((segment, i) =>
+          // Whitespace segments render as bare text, not wrapped spans. An
+          // inline-block space cannot collapse at a line break, so a wrapped
+          // headline kept the space and rendered it as a leading indent on
+          // the next line (measured: 13px on line 2 of the hero h1). Bare
+          // text collapses normally at the break. Nothing is animated away —
+          // a space has no glyph to animate.
+          /^\s+$/.test(segment) && by !== "line" ? (
+            <span key={`${by}-space-${i}`}>{segment}</span>
+          ) : (
+            <motion.span
+              key={`${by}-${segment}-${i}`}
+              variants={finalVariants.item}
+              custom={i * staggerTimings[by]}
+              className={cn(
+                by === "line" ? "block" : "inline-block whitespace-pre",
+                by === "character" && "",
+                segmentClassName
+              )}
+              aria-hidden={accessible ? true : undefined}
+            >
+              {segment}
+            </motion.span>
+          )
+        )}
       </MotionComponent>
     </AnimatePresence>
   )

@@ -173,7 +173,7 @@ export function CtaWithTextMarquee() {
           className="relative h-[380px] sm:h-[460px] lg:h-[560px] flex items-center justify-center"
         >
           <div className="relative w-full h-full">
-            <VerticalMarquee speed={26} pauseOnHover className="h-full">
+            <VerticalMarquee speed={36} pauseOnHover className="h-full">
               {LANES.map((lane) => (
                 <div
                   key={lane}
@@ -184,10 +184,12 @@ export function CtaWithTextMarquee() {
               ))}
             </VerticalMarquee>
 
-            {/* edge fades — same two-stop ramp as the reference, retuned to
-                this section's gradient so the ends dissolve into it */}
-            <div className="pointer-events-none absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#14161d] via-[#14161d]/60 to-transparent z-10" />
-            <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#0B0C10] via-[#0B0C10]/60 to-transparent z-10" />
+            {/* edge fades — same two-stop ramp as the reference, and the same
+                proportion of the container height (reference: h-64 of 700px =
+                37%; here h-36/h-44/h-52 tracks 380/460/560px), retuned to this
+                section's gradient so the ends dissolve into it */}
+            <div className="pointer-events-none absolute top-0 left-0 right-0 h-36 sm:h-44 lg:h-52 bg-gradient-to-b from-[#14161d] via-[#14161d]/60 to-transparent z-10" />
+            <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-36 sm:h-44 lg:h-52 bg-gradient-to-t from-[#0B0C10] via-[#0B0C10]/60 to-transparent z-10" />
           </div>
         </div>
       </div>

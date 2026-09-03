@@ -55,6 +55,13 @@ export default function App() {
           {/* accessible={false}: the visible words already sit inside the
               <h1>, so TextAnimate's sr-only copy + aria-label made screen
               readers announce the headline twice. */}
+          {/* The three lines are broken deliberately, not left to chance:
+              "...70 point / growth gap. We found / where it is coming from."
+              The breaks only apply from lg up, where the longest line
+              (measured 686px at 60px type) clears the 768px column. Below
+              that the type shrinks but the column shrinks faster, so the
+              line no longer fits and the text is left to wrap on its own
+              rather than overflow. */}
           <TextAnimate
             as="span"
             by="word"
@@ -79,7 +86,35 @@ export default function App() {
             className="inline"
             segmentClassName="inline-block whitespace-pre"
           >
-            point growth gap. We found where it is coming from.
+            point
+          </TextAnimate>{' '}
+          <br className="hidden lg:inline" />
+          <TextAnimate
+            as="span"
+            by="word"
+            animation="blurInUp"
+            once
+            accessible={false}
+            duration={0.8}
+            delay={0.45}
+            className="inline"
+            segmentClassName="inline-block whitespace-pre"
+          >
+            growth gap. We found
+          </TextAnimate>{' '}
+          <br className="hidden lg:inline" />
+          <TextAnimate
+            as="span"
+            by="word"
+            animation="blurInUp"
+            once
+            accessible={false}
+            duration={0.8}
+            delay={0.65}
+            className="inline"
+            segmentClassName="inline-block whitespace-pre"
+          >
+            where it is coming from.
           </TextAnimate>
         </h1>
 

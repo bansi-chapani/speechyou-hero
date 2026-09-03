@@ -184,21 +184,6 @@ export default function App() {
           pages built for them, and demand on Reddit and Quora going uncaptured.
         </p>
 
-        <ul className="flex flex-wrap gap-x-5 gap-y-2 mb-7 text-[13px] text-white/55">
-          <li className="flex items-center gap-2">
-            <span className="w-1 h-1 rounded-full bg-white/40" />
-            8 findings scored
-          </li>
-          <li className="flex items-center gap-2">
-            <span className="w-1 h-1 rounded-full bg-white/40" />
-            3 rated critical
-          </li>
-          <li className="flex items-center gap-2">
-            <span className="w-1 h-1 rounded-full bg-white/40" />
-            90-day action plan
-          </li>
-        </ul>
-
         {/* "Book a call" is the commercial action, so it takes the light
             (primary) pill; reading the report is the secondary path. */}
         <div className="flex flex-wrap items-center gap-3">

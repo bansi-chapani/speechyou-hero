@@ -590,7 +590,12 @@ footer a:hover{text-decoration:underline}
 .card:hover{background:rgba(255,255,255,.07)}
 .viz{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.017));
      border:1px solid var(--card-line)}
-blockquote{background:rgba(255,255,255,.05);border-left:3px solid rgba(255,255,255,.28)}
+/* blockquotes in the dark report theme: pill-style CTA callouts with a
+   rounded border, matching the design reference. The left-bar approach from
+   the light theme doesn't read on dark backgrounds. */
+blockquote{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);
+ border-left:1px solid rgba(255,255,255,.14);border-radius:var(--r-pill);
+ padding:12px 20px;display:inline-block}
 table thead th{background:rgba(255,255,255,.05)}
 .plan-wrap{background:linear-gradient(180deg,#0e1016,#14161d)}
 .plan-wrap>.wrap{padding-left:var(--pad);padding-right:var(--pad)}

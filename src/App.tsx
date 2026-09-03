@@ -159,33 +159,40 @@ export default function App() {
 
       <CtaWithTextMarquee />
 
-      {/* Persistent booking CTA. Between the hero CTA and the plan CTA at the
-          very bottom there is a ~4,500px stretch with no way to book, which is
-          exactly where a convinced reader decides. Appears after the hero. */}
-      <a
-        href={CALL_URL}
-        aria-label="Book a call — let us handle it for you"
+      {/* Persistent booking CTA — full-width sticky bar at the bottom.
+          Appears once the hero's own buttons scroll away. */}
+      <div
         className={[
-          'fixed z-[95] right-4 sm:right-6',
-          'bottom-[calc(1rem+env(safe-area-inset-bottom,0px))]',
-          'sm:bottom-[calc(1.5rem+env(safe-area-inset-bottom,0px))]',
-          'inline-flex items-center gap-2 rounded-full',
-          'px-[18px] py-3 min-h-[44px]',
-          'bg-white text-[#0B0C10] no-underline',
-          'text-sm font-medium tracking-[-0.005em]',
-          'shadow-[0_1px_2px_rgba(0,0,0,.2),0_10px_30px_rgba(0,0,0,.35)]',
-          'transition-all duration-300 ease-out hover:bg-[#EDEDF2]',
+          'fixed z-[95] left-0 right-0',
+          'bottom-0',
+          'flex justify-center',
+          'px-4 pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))] pt-3',
+          'bg-gradient-to-t from-black/90 via-black/70 to-transparent',
+          'transition-all duration-300 ease-out',
           showFab
             ? 'opacity-100 translate-y-0 pointer-events-auto'
-            : 'opacity-0 translate-y-2 pointer-events-none',
+            : 'opacity-0 translate-y-4 pointer-events-none',
         ].join(' ')}
       >
-        Book a call
-        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="w-4 h-4">
-          <path d="M3 8h9m0 0-3.5-3.5M12 8l-3.5 3.5" stroke="currentColor"
-            strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </a>
+        <a
+          href={CALL_URL}
+          aria-label="Book a call — let us handle it for you"
+          className={[
+            'flex items-center justify-center gap-2 w-full max-w-md',
+            'px-6 py-3.5 min-h-[48px] rounded-xl',
+            'bg-white text-[#0B0C10] no-underline',
+            'text-[15px] font-semibold tracking-[-0.01em]',
+            'shadow-[0_2px_4px_rgba(0,0,0,.2),0_12px_40px_rgba(0,0,0,.4)]',
+            'transition-all duration-200 ease-out hover:bg-[#F0F0F5] hover:scale-[1.02]',
+          ].join(' ')}
+        >
+          Book a call
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="w-4 h-4">
+            <path d="M3 8h9m0 0-3.5-3.5M12 8l-3.5 3.5" stroke="currentColor"
+              strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </a>
+      </div>
     </div>
   );
 }

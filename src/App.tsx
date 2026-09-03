@@ -143,17 +143,15 @@ export default function App() {
 
         {/* "Book a call" is the commercial action, so it takes the light
             (primary) pill; reading the report is the secondary path. */}
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex items-center gap-3">
           <LiquidMetalButton
             label="Book a Call"
             variant="light"
-            width={186}
             href={CALL_URL}
           />
           <LiquidMetalButton
             label="Read the Report"
             variant="dark"
-            width={186}
             href={REPORT_URL}
           />
         </div>

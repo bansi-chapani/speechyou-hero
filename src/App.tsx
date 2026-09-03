@@ -171,13 +171,11 @@ export default function App() {
             Your growth engine is at
           </TextAnimate>{' '}
           <HeroScore value={52} />
-          <span className="hero-score-sep"> &rarr; </span>
-          <HeroScore value={86} variant="to" delay={200} />
         </h1>
 
         {/* Summary carries the actual findings, not a description of the
             report. Every figure here is read from finding-scores.json. */}
-        <p className="text-white/75 text-[13px] leading-relaxed mb-4 max-w-lg">
+        <p className="text-white/75 text-[13px] leading-relaxed mb-7 max-w-lg">
           We scored 8 areas of SpeechYou&rsquo;s marketing. The product
           isn&rsquo;t the problem &mdash; distribution is. You have a presence
           on <strong className="text-white/95 font-medium">4 of 11</strong> channels,
@@ -185,21 +183,6 @@ export default function App() {
           <strong className="text-white/95 font-medium">#10&ndash;16</strong> with no
           pages built for them, and demand on Reddit and Quora going uncaptured.
         </p>
-
-        <ul className="flex flex-wrap gap-x-5 gap-y-2 mb-7 text-[13px] text-white/55">
-          <li className="flex items-center gap-2">
-            <span className="w-1 h-1 rounded-full bg-white/40" />
-            8 findings scored
-          </li>
-          <li className="flex items-center gap-2">
-            <span className="w-1 h-1 rounded-full bg-white/40" />
-            3 rated critical
-          </li>
-          <li className="flex items-center gap-2">
-            <span className="w-1 h-1 rounded-full bg-white/40" />
-            90-day action plan
-          </li>
-        </ul>
 
         {/* "Book a call" is the commercial action, so it takes the light
             (primary) pill; reading the report is the secondary path. */}

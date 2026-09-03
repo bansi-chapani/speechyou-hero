@@ -418,17 +418,13 @@ i.band-good{background:var(--pass)} i.band-avg{background:var(--warn)} i.band-po
 .plan-wrap h2{color:var(--paper);max-width:26ch;margin-bottom:6px}
 /* A priority list must read 1..7 top-to-bottom. A 2-col grid flows
    left-right and scrambles the order, so this is a single ranked column. */
-.plan-wrap .ul{margin-top:clamp(24px,3.4vw,36px);counter-reset:pri;
+.plan-wrap .ul{margin-top:clamp(24px,3.4vw,36px);
  display:grid;grid-template-columns:1fr;gap:0;
  border-top:1px solid rgba(255,255,255,.14)}
-.plan-wrap .ul li{counter-increment:pri;background:none;color:rgba(255,255,255,.78);
- font-size:15px;line-height:1.6;margin:0;padding:18px 0 18px 58px;position:relative;
+.plan-wrap .ul li{background:none;color:rgba(255,255,255,.78);
+ font-size:15px;line-height:1.6;margin:0;padding:18px 0;position:relative;
  border-bottom:1px solid rgba(255,255,255,.14);max-width:none}
 .plan-wrap .ul li strong,.plan-wrap .ul li b{color:var(--paper)}
-.plan-wrap .ul li::before{content:counter(pri,decimal-leading-zero);
- position:absolute;left:0;top:18px;color:var(--accent);font-size:12.5px;
- letter-spacing:.04em;font-variant-numeric:tabular-nums;font-weight:600;
- line-height:24px}
 @media(max-width:560px){
   .plan-wrap .ul li{padding-left:44px;font-size:14.5px}
 }
@@ -556,7 +552,7 @@ footer a:hover{text-decoration:underline}
 }
 .ovc-art::before{
   content:'';position:absolute;inset:0;z-index:0;
-  background:linear-gradient(180deg, rgba(6,7,10,0) 0%, rgba(6,7,10,.14) 100%);
+  background:linear-gradient(180deg, rgba(6,7,10,.38) 0%, rgba(6,7,10,.55) 100%);
 }
 .ovc-art::after{
   content:'';position:absolute;inset:0;z-index:0;

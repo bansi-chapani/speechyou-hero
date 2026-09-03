@@ -177,7 +177,7 @@ export function CtaWithTextMarquee() {
               {LANES.map((lane) => (
                 <div
                   key={lane}
-                  className="marquee-item text-white text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-light tracking-tight py-4 sm:py-5 lg:py-6 whitespace-nowrap"
+                  className="marquee-item text-white text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-light tracking-tight py-4 sm:py-5 lg:py-6 whitespace-nowrap"
                 >
                   {lane}
                 </div>

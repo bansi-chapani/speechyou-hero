@@ -590,7 +590,8 @@ footer a:hover{text-decoration:underline}
    the light theme doesn't read on dark backgrounds. */
 blockquote{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);
  border-left:1px solid rgba(255,255,255,.14);border-radius:var(--r-pill);
- padding:12px 20px;display:inline-block}
+ padding:12px 20px;font-size:14px;display:inline-block;margin:0}
+.bq-row{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
 table thead th{background:rgba(255,255,255,.05)}
 .plan-wrap{background:linear-gradient(180deg,#0e1016,#14161d)}
 .plan-wrap>.wrap{padding-left:var(--pad);padding-right:var(--pad)}

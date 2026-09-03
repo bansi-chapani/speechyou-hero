@@ -139,7 +139,9 @@ export function CtaWithTextMarquee() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
         {/* ---------------- left: the ask ---------------- */}
         <div className="max-w-xl">
-          <div className="text-[13px] font-medium tracking-wide text-[#8B7AFF] mb-3">
+          {/* eyebrow: the violet accent is retired, so this reads as a quiet
+              white label rather than a coloured one */}
+          <div className="text-[13px] font-medium tracking-wide text-white/55 mb-3">
             Next step
           </div>
 

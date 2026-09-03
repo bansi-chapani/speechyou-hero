@@ -8,12 +8,16 @@
   --ink:rgb(242,243,245);
   --muted:rgb(176,181,191);
   --faint:rgb(150,156,168);
-  --accent:rgb(139,122,255);
-  --accent-10:rgba(167,139,250,.12);
-  --accent-30:rgba(167,139,250,.34);
+  /* Accent retired from violet to white. The token NAMES are kept so the
+     ~52 call sites don't have to change; only the values move. On a dark
+     paper a white accent has to carry weight through opacity, not hue, so
+     -10 / -30 are the glass plate and the glass edge respectively. */
+  --accent:rgb(255,255,255);
+  --accent-10:rgba(255,255,255,.07);
+  --accent-30:rgba(255,255,255,.22);
   --line:rgba(255,255,255,.09);
   --card-line:rgba(255,255,255,.08);
-  --hi:rgb(196,184,255);
+  --hi:rgb(255,255,255);
   --hair:rgba(255,255,255,.055);
   /* Card gradient palette — sampled from the swatch sheet the user chose
      (swatches 1, 2, 3, 4, 6, 8, 9, 10). Endpoints are the measured light/dark
@@ -107,7 +111,8 @@ h1 .hl{color:var(--accent)}
 }
 
 /* intro */
-.intro{padding:clamp(34px,5vw,54px) 0;border-bottom:1px solid var(--hair);background:var(--paper)}
+.intro{padding:clamp(34px,5vw,54px) 0 clamp(56px,7vw,88px);
+ border-bottom:1px solid var(--hair);background:var(--paper)}
 .intro p{color:var(--muted);font-size:15px;line-height:1.62;margin-bottom:11px;max-width:68ch}
 .intro p:last-child{margin-bottom:0}
 .intro .ul{margin:14px 0 4px}
@@ -258,11 +263,13 @@ i.band-good{background:var(--pass)} i.band-avg{background:var(--warn)} i.band-po
 .fsev{
   font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
   padding:6px 12px;border-radius:100px;white-space:nowrap;
-  background:rgba(139,122,255,.13);border:1px solid rgba(139,122,255,.30);
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.20);
+  -webkit-backdrop-filter:blur(12px) saturate(1.3);
+  backdrop-filter:blur(12px) saturate(1.3);
 }
 .fsev.sev-crit{color:#FF6B85}
 .fsev.sev-high{color:#FFA53D}
-.fsev.sev-med{color:#A78BFA}
+.fsev.sev-med{color:#9FB4C7}
 .fsev.sev-low{color:#34D399}
 
 .fd{border:1px solid var(--card-line);border-radius:var(--r);background:var(--paper);
@@ -310,13 +317,16 @@ i.band-good{background:var(--pass)} i.band-avg{background:var(--warn)} i.band-po
 /* ---------- cards (measured from seline.com: 10px radius, 1px
    rgba(214,211,209,.5) border, white, 24px pad, no shadow, icon in every card) ---------- */
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
- gap:16px;margin:18px 0 22px}
+ gap:16px;margin:26px 0 30px}
 .card{background:var(--paper);border:1px solid var(--card-line);border-radius:var(--r);
  padding:24px;transition:border-color .2s ease,transform .25s var(--ease)}
 .card:hover{border-color:var(--accent-30);transform:translateY(-2px)}
-.card .ic{width:34px;height:34px;border-radius:var(--r-sm);background:var(--accent-10);
+.card .ic{width:34px;height:34px;border-radius:var(--r-sm);
+ background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+ -webkit-backdrop-filter:blur(12px) saturate(1.3);
+ backdrop-filter:blur(12px) saturate(1.3);
  display:grid;place-items:center;margin-bottom:14px}
-.card .ic svg{width:20px;height:20px;stroke:var(--accent);stroke-width:2;fill:none;
+.card .ic svg{width:20px;height:20px;stroke:rgba(255,255,255,.92);stroke-width:2;fill:none;
  stroke-linecap:round;stroke-linejoin:round}
 .card h3.ct{font-size:15px;font-weight:500;letter-spacing:-.01em;margin-bottom:6px;color:var(--ink)}
 .card p{font-size:13.5px;line-height:1.55;color:var(--muted);margin:0}
@@ -324,10 +334,15 @@ i.band-good{background:var(--pass)} i.band-avg{background:var(--warn)} i.band-po
  font-variant-numeric:tabular-nums;margin-bottom:4px;display:block}
 
 /* sentence highlight — reference uses rgb(35,103,150) at weight 400 */
-.hl{color:var(--hi);font-weight:400}
+/* Highlight without hue: the accent is white now, so a coloured word is no
+   longer available. Emphasis comes from weight + a hairline underline, which
+   survives on a dark plate and doesn't invent a second accent. */
+.hl{color:#fff;font-weight:560;
+ box-shadow:inset 0 -1px 0 rgba(255,255,255,.34);
+ padding-bottom:.5px}
 .hl-h{color:var(--accent);font-weight:400}
 .eyebrow{font-size:12.5px;color:var(--faint);margin-bottom:10px;letter-spacing:.04em;text-transform:uppercase}
-.hl-bg{background:var(--accent-10);border-radius:var(--r-xs);padding:1px 5px;color:var(--hi)}
+.hl-bg{background:rgba(255,255,255,.09);border-radius:var(--r-xs);padding:1px 5px;color:#fff;font-weight:520}
 
 /* ---------- hero CTAs ---------- */
 .ctas{display:flex;gap:10px;flex-wrap:wrap;margin-top:clamp(28px,4vw,38px)}
@@ -349,7 +364,7 @@ i.band-good{background:var(--pass)} i.band-avg{background:var(--warn)} i.band-po
 .cta.primary:hover svg{transform:translateX(2px)}
 .cta.ghost{background:var(--paper);color:var(--ink);border:1px solid var(--line)}
 .cta.ghost:hover{border-color:var(--accent);color:var(--accent);
-  background:rgba(139,122,255,.08);transform:translateY(-1px)}
+  background:rgba(255,255,255,.08);transform:translateY(-1px)}
 .cta:active{transform:translateY(1px)}
 @media(max-width:420px){.ctas{flex-direction:column;align-items:stretch}.cta{width:100%}}
 
@@ -547,19 +562,30 @@ footer a:hover{text-decoration:underline}
 .ovc:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
 .ovc-art{
-  position:relative;height:184px;overflow:hidden;
+  position:absolute;inset:0;height:auto;overflow:hidden;z-index:0;
   background-size:cover;background-position:center;
+  border-radius:inherit;
 }
 .ovc-art::before{
   content:'';position:absolute;inset:0;z-index:0;
-  background:linear-gradient(180deg, rgba(6,7,10,.38) 0%, rgba(6,7,10,.55) 100%);
+  /* Bottom-weighted scrim. The title band sits at ~52-74% depth, so those two
+     stops are what actually carry legibility: measured worst case was card 5
+     (warm olive art) at 4.75:1, only 0.25 above the 4.5 AA floor. Deepening
+     the mid stops lifts the floor without flattening the colour up top, which
+     is the part the design is for. */
+  background:linear-gradient(180deg,
+    rgba(6,7,10,.20) 0%,
+    rgba(6,7,10,.36) 26%,
+    rgba(6,7,10,.72) 52%,
+    rgba(6,7,10,.88) 74%,
+    rgba(6,7,10,.93) 100%);
 }
 .ovc-art::after{
   content:'';position:absolute;inset:0;z-index:0;
   background:radial-gradient(120% 92% at 20% 10%, rgba(255,255,255,.14), transparent 60%);
 }
 .ovc-sev{
-  position:absolute;z-index:2;top:14px;left:14px;
+  position:absolute;z-index:3;top:14px;right:14px;
   display:inline-flex;align-items:center;gap:7px;
   font-size:11px;font-weight:650;letter-spacing:.10em;text-transform:uppercase;
   padding:6px 12px 6px 10px;border-radius:100px;
@@ -575,22 +601,26 @@ footer a:hover{text-decoration:underline}
 }
 .ovc-sev.sev-crit{color:#FF6B85}
 .ovc-sev.sev-high{color:#FFA53D}
-.ovc-sev.sev-med{color:#A78BFA}
+.ovc-sev.sev-med{color:#9FB4C7}
 .ovc-sev.sev-low{color:#34D399}
 
-.ovc-body{display:flex;flex-direction:column;gap:10px;padding:20px 20px 22px;flex:1;min-height:210px}
-.ovc-t{font-size:17px;line-height:1.34;font-weight:600;color:var(--ink)}
-.ovc-s{font-size:14px;line-height:1.55;color:var(--muted);flex:1}
+.ovc-body{position:relative;z-index:1;display:flex;flex-direction:column;
+  justify-content:flex-end;gap:10px;padding:64px 20px 22px;flex:1;min-height:394px}
+.ovc-t{font-size:17px;line-height:1.34;font-weight:600;color:var(--ink);
+  text-shadow:0 1px 10px rgba(0,0,0,.55)}
+.ovc-s{font-size:14px;line-height:1.55;color:rgba(255,255,255,.80);flex:none;
+  text-shadow:0 1px 8px rgba(0,0,0,.5)}
 .ovc-cta{
   display:inline-flex;align-items:center;justify-content:center;gap:7px;
-  margin-top:auto;align-self:flex-start;
+  margin-top:6px;align-self:flex-start;
   padding:10px 18px;border-radius:100px;
-  background:#3A3A3A;color:#F2F2F2;
+  background:#FFFFFF;color:#141518;
   font-size:13.5px;font-weight:500;letter-spacing:-.005em;
-  transition:background .18s var(--ease);
+  box-shadow:0 2px 14px rgba(0,0,0,.28);
+  transition:background .18s var(--ease),box-shadow .18s var(--ease);
 }
 .ovc-cta svg{width:14px;height:14px;transition:transform .2s var(--ease)}
-.ovc:hover .ovc-cta{background:#4A4A4A}
+.ovc:hover .ovc-cta{background:#F2F2F2;box-shadow:0 4px 18px rgba(0,0,0,.36)}
 .ovc:hover .ovc-cta svg{transform:translateX(3px)}
 
 .ovc-1{background-image:none}
@@ -616,7 +646,7 @@ footer a:hover{text-decoration:underline}
 @media(max-width:680px){
   .ovgrid{grid-template-columns:1fr}
   .ovc{grid-column:auto}
-  .ovc-art{height:150px}
+  .ovc-body{min-height:340px;padding:56px 18px 20px}
 }
 .ovgrid .ovc{opacity:0;transform:translateY(14px);
   transition:opacity .5s var(--ease),transform .5s var(--ease),
@@ -629,7 +659,7 @@ footer a:hover{text-decoration:underline}
 .card:hover{background:rgba(255,255,255,.07)}
 .viz{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.017));
      border:1px solid var(--card-line)}
-blockquote{background:rgba(179,157,255,.09);border-left:3px solid var(--accent)}
+blockquote{background:rgba(255,255,255,.05);border-left:3px solid rgba(255,255,255,.28)}
 table thead th{background:rgba(255,255,255,.05)}
 .plan-wrap{background:linear-gradient(180deg,#0e1016,#14161d)}
 .plan-wrap>.wrap{padding-left:var(--pad);padding-right:var(--pad)}

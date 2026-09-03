@@ -134,22 +134,23 @@ export function CtaWithTextMarquee() {
   return (
     <section
       id="start"
-      className="relative overflow-hidden bg-[linear-gradient(180deg,#14161d_0%,#0B0C10_55%)] site-pad py-16 sm:py-24 lg:py-28"
+      className="relative overflow-hidden site-pad py-16 sm:py-24 lg:py-28"
+      style={{ background: 'var(--cta-bg, linear-gradient(180deg,#14161d 0%,#0B0C10 55%))' }}
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
         {/* ---------------- left: the ask ---------------- */}
         <div className="max-w-xl">
           {/* eyebrow: the violet accent is retired, so this reads as a quiet
               white label rather than a coloured one */}
-          <div className="text-[13px] font-medium tracking-wide text-white/55 mb-3">
+          <div className="text-[13px] font-medium tracking-wide mb-3" style={{ color: 'var(--cta-muted, rgba(255,255,255,.55))' }}>
             No obligation, no pitch deck.
           </div>
 
-          <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-medium leading-tight tracking-tight mb-5">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium leading-tight tracking-tight mb-5" style={{ color: 'var(--cta-ink, #fff)' }}>
             We can help you execute the entire plan end to end.
           </h2>
 
-          <p className="text-white/60 text-[15px] leading-relaxed mb-8 max-w-md">
+          <p className="text-[15px] leading-relaxed mb-8 max-w-md" style={{ color: 'var(--cta-muted, rgba(255,255,255,.60))' }}>
             Get started in a call
           </p>
 
@@ -196,7 +197,8 @@ export function CtaWithTextMarquee() {
               {LANES.map((lane) => (
                 <div
                   key={lane}
-                  className="marquee-item text-white text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-light tracking-tight py-4 sm:py-5 lg:py-6 whitespace-nowrap"
+                  className="marquee-item text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-light tracking-tight py-4 sm:py-5 lg:py-6 whitespace-nowrap"
+                  style={{ color: 'var(--cta-ink, #fff)' }}
                 >
                   {lane}
                 </div>

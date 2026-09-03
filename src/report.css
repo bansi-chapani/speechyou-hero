@@ -609,6 +609,117 @@ table thead th{background:rgba(255,255,255,.05)}
 .band-warn{color:#E8C46B}
 .band-good{color:#8FD9A8}
 
+/* ================================================================
+   LIGHT THEME — scoped under html.light so the hero stays dark
+   ================================================================ */
+html.light{
+  --bg:#F4F5F7;
+  --paper:#FFFFFF;
+  --panel:#F0F1F3;
+  --ink:#1A1D23;
+  --muted:#6B7280;
+  --faint:#9CA3AF;
+  --accent:#7C6BFF;
+  --accent-10:rgba(124,107,255,.10);
+  --accent-30:rgba(124,107,255,.24);
+  --line:rgba(0,0,0,.09);
+  --card-line:rgba(0,0,0,.10);
+  --hi:#1A1D23;
+  --hair:rgba(0,0,0,.06);
+}
+html.light body{background:var(--bg);color:var(--ink)}
+html.light ::selection{background:var(--accent-30)}
 
+/* highlights */
+html.light .report-root .hl{color:var(--ink);box-shadow:inset 0 -1px 0 rgba(0,0,0,.22)}
+html.light .report-root .hl-bg{background:rgba(124,107,255,.10);color:var(--ink)}
+html.light .report-root .hl-h{color:var(--accent)}
+
+/* cards */
+html.light .report-root .card{background:var(--paper);border-color:var(--card-line)}
+html.light .report-root .card:hover{border-color:var(--accent-30)}
+html.light .report-root .card .ic svg{stroke:#1A1D23}
+
+/* blockquotes */
+html.light .report-root blockquote{background:rgba(124,107,255,.06);color:var(--ink)}
+
+/* part mini-nav */
+html.light .report-root .pnav{background:var(--paper);border-color:var(--card-line)}
+html.light .report-root .pnav-i{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.12);color:var(--ink)}
+html.light .report-root .pnav-i:hover{background:rgba(124,107,255,.10);border-color:var(--accent)}
+html.light .report-root .pnav-i .pn{color:var(--accent)}
+
+/* stat cards */
+html.light .report-root .stat-card{background:var(--paper);border-color:var(--card-line)}
+html.light .report-root .stat-card:hover{background:rgba(124,107,255,.04);border-color:var(--accent-30)}
+
+/* findings accordions */
+html.light .report-root .fd{background:var(--paper);border-color:var(--card-line)}
+html.light .report-root .fsum:hover{background:rgba(0,0,0,.03)}
+html.light .report-root .fd[open] .fsum{background:rgba(0,0,0,.03);border-bottom-color:var(--line)}
+
+/* viz / charts */
+html.light .report-root .viz{background:linear-gradient(180deg,rgba(124,107,255,.06),var(--paper) 58%);
+  border-color:var(--card-line)}
+
+/* rail */
+html.light .report-root .rail-in{border-right-color:var(--line)}
+html.light .report-root .rail-cta{background:#E8E8EC;color:#1A1D23}
+html.light .report-root .rail-cta:hover{background:#DCDCE2}
+
+/* ghost CTA */
+html.light .report-root .cta.ghost{background:var(--paper);border-color:var(--line);color:var(--ink)}
+html.light .report-root .cta.ghost:hover{border-color:var(--accent);color:var(--accent);background:rgba(124,107,255,.06)}
+
+/* plan section — stays on a tinted ground, not full inversion */
+html.light .report-root .plan-wrap{background:linear-gradient(180deg,#F0ECF9,#E8E4F5)}
+html.light .report-root .plan-wrap,
+html.light .report-root .plan-wrap h2,
+html.light .report-root .plan-wrap h3,
+html.light .report-root .plan-wrap p{color:var(--ink)}
+html.light .report-root .plan-wrap .ul li{color:var(--muted)}
+html.light .report-root .plan-wrap .ul li strong,
+html.light .report-root .plan-wrap .ul li b{color:var(--ink)}
+html.light .report-root .plan-wrap .ul{border-top-color:rgba(0,0,0,.10)}
+html.light .report-root .plan-wrap .ul li{border-bottom-color:rgba(0,0,0,.08)}
+html.light .report-root .plan-wrap .muted,
+html.light .report-root .plan-wrap .sub{color:var(--muted)}
+
+/* plan CTA buttons inside plan-wrap */
+html.light .report-root .plan-cta-copy strong{color:var(--ink)}
+html.light .report-root .plan-cta-copy span{color:var(--muted)}
+
+/* file card */
+html.light .report-root .file{background:rgba(124,107,255,.06);border-color:var(--accent-30)}
+
+/* tables */
+html.light .report-root .tbl .tr.hd{background:rgba(124,107,255,.06)}
+html.light .report-root .tbl .th{color:var(--ink)}
+
+/* footer */
+html.light .report-root footer a{color:var(--accent)}
+
+/* progress bar */
+html.light .prog i{background:var(--accent)}
+
+/* score bands stay the same — they need to pop on both backgrounds */
+
+/* ================================================================
+   THEME TOGGLE BUTTON
+   ================================================================ */
+.theme-toggle{
+  position:fixed;top:18px;right:18px;z-index:9999;
+  width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.18);
+  background:rgba(0,0,0,.35);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  color:#fff;transition:background .2s ease,border-color .2s ease,color .2s ease;
+  padding:0;
+}
+.theme-toggle:hover{background:rgba(0,0,0,.55);border-color:rgba(255,255,255,.28)}
+.theme-toggle svg{width:20px;height:20px}
+html.light .theme-toggle{
+  background:rgba(255,255,255,.75);border-color:rgba(0,0,0,.12);color:#1A1D23;
+}
+html.light .theme-toggle:hover{background:rgba(255,255,255,.92)}
 
 

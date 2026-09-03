@@ -63,3 +63,10 @@
   mask-composite: exclude;
   pointer-events: none;
 }
+
+/* ── Light-theme CTA section overrides ── */
+html.light {
+  --cta-bg: linear-gradient(180deg, #F0ECF9 0%, #E2DDF3 55%);
+  --cta-ink: #1A1D23;
+  --cta-muted: #6B7280;
+}

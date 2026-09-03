@@ -1,10 +1,32 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import ReportSections from './ReportSections';
 import HeroScore from './HeroScore';
 import { TextAnimate } from '@/components/ui/text-animate';
 import './hero-score.css';
 import { LiquidMetalButton } from '@/components/ui/liquid-metal-button';
 import { CtaWithTextMarquee } from '@/components/ui/cta-with-text-marquee';
+
+/* ─── Sun / Moon SVG icons for theme toggle ─── */
+const SunIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+    strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="5"/>
+    <line x1="12" y1="1" x2="12" y2="3"/>
+    <line x1="12" y1="21" x2="12" y2="23"/>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+    <line x1="1" y1="12" x2="3" y2="12"/>
+    <line x1="21" y1="12" x2="23" y2="12"/>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+  </svg>
+);
+const MoonIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+    strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+);
 
 const BG_VIDEO =
   'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260511_230229_7c9bc431-46cf-489a-948d-e8144d8eb5d4.mp4';
@@ -17,6 +39,29 @@ const CALL_URL = 'mailto:hello@nextbase.co?subject=SpeechYou%20growth%20report';
 
 export default function App() {
   const [showFab, setShowFab] = useState(false);
+
+  /* ─── Theme toggle (dark ↔ light) ─── */
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    // Read saved preference (SSR-safe fallback)
+    if (typeof window !== 'undefined') {
+      return (localStorage.getItem('speechyou-theme') as 'dark' | 'light') || 'dark';
+    }
+    return 'dark';
+  });
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === 'light') {
+      root.classList.add('light');
+    } else {
+      root.classList.remove('light');
+    }
+    localStorage.setItem('speechyou-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = useCallback(() => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  }, []);
 
   // Reveal the persistent booking CTA once the hero's own buttons scroll away,
   // but hide it again when the bottom CTA section (#start) comes into view —
@@ -39,6 +84,15 @@ export default function App() {
 
   return (
     <div className="w-full">
+      {/* ── Theme toggle ── */}
+      <button
+        className="theme-toggle"
+        onClick={toggleTheme}
+        aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+      >
+        {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+      </button>
+
       <section className="relative w-full h-screen overflow-hidden">
       <video
         className="absolute inset-0 w-full h-full object-cover"

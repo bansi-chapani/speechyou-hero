@@ -171,6 +171,8 @@ export default function App() {
             Your growth engine is at
           </TextAnimate>{' '}
           <HeroScore value={52} />
+          <span className="hero-score-sep"> &rarr; </span>
+          <HeroScore value={86} variant="to" delay={200} />
         </h1>
 
         {/* Summary carries the actual findings, not a description of the

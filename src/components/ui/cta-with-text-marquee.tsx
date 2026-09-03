@@ -142,15 +142,15 @@ export function CtaWithTextMarquee() {
           {/* eyebrow: the violet accent is retired, so this reads as a quiet
               white label rather than a coloured one */}
           <div className="text-[13px] font-medium tracking-wide text-white/55 mb-3">
-            Get started in a call
+            No obligation, no pitch deck.
           </div>
 
           <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-medium leading-tight tracking-tight mb-5">
-            We can help you execute the entire plan end to end
+            Get started in a call
           </h2>
 
           <p className="text-white/60 text-[15px] leading-relaxed mb-8 max-w-md">
-            No obligation, no pitch deck.
+            We can help you execute the entire plan end to end.
           </p>
 
           <div className="flex flex-wrap items-center gap-3">

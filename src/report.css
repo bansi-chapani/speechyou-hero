@@ -594,6 +594,9 @@ blockquote{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1
  border-left:1px solid rgba(255,255,255,.14);border-radius:var(--r-pill);
  padding:12px 20px;font-size:14px;display:inline-block;margin:0}
 .bq-row{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+.bq-labeled{display:flex;align-items:center;gap:12px;margin:12px 0}
+.bq-labeled blockquote{display:inline-block;margin:0}
+.bq-label{color:rgba(255,255,255,.85);font-size:14px;font-weight:500;white-space:nowrap}
 table thead th{background:rgba(255,255,255,.05)}
 .plan-wrap{background:linear-gradient(180deg,#0e1016,#14161d)}
 .plan-wrap>.wrap{padding-left:var(--pad);padding-right:var(--pad)}

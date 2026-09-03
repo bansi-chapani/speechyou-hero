@@ -601,8 +601,10 @@ table thead th{background:rgba(255,255,255,.05)}
    (rgb(16,18,23) on near-black). Now li text stays soft white, and strong/b are
    explicitly set to full white so the category labels are visible. */
 .plan-wrap,.plan-wrap h2,.plan-wrap h3,.plan-wrap p{color:var(--ink)}
-.plan-wrap .ul li{color:rgba(255,255,255,.78)}
-.plan-wrap .ul li strong,.plan-wrap .ul li b{color:#F2F3F5}
+.plan-wrap .ul li{color:rgba(255,255,255,.55)}
+.plan-wrap .ul li strong,.plan-wrap .ul li b{color:#FFFFFF;font-weight:600}
+.plan-wrap .ul li strong::after,.plan-wrap .ul li b::after{
+  content:" — ";font-weight:400;color:rgba(255,255,255,.35)}
 .plan-wrap .muted,.plan-wrap .sub{color:var(--muted)}
 /* poor/critical score text needs lifting on dark (was 4.22:1) */
 .band-poor{color:#F2849B}

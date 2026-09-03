@@ -19,9 +19,19 @@ export default function App() {
   const [showFab, setShowFab] = useState(false);
 
   // Reveal the persistent booking CTA once the hero's own buttons scroll away,
-  // so there is never a long stretch of report with no way to book.
+  // but hide it again when the bottom CTA section (#start) comes into view —
+  // that section has its own "Book a Call" button, so showing both is redundant.
   useEffect(() => {
-    const onScroll = () => setShowFab(window.scrollY > window.innerHeight * 0.9);
+    const onScroll = () => {
+      const pastHero = window.scrollY > window.innerHeight * 0.9;
+      const bottomCta = document.getElementById('start');
+      let nearBottom = false;
+      if (bottomCta) {
+        const rect = bottomCta.getBoundingClientRect();
+        nearBottom = rect.top < window.innerHeight;
+      }
+      setShowFab(pastHero && !nearBottom);
+    };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);

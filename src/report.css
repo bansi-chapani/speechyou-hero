@@ -613,9 +613,9 @@ table thead th{background:rgba(255,255,255,.05)}
    LIGHT THEME — scoped under html.light so the hero stays dark
    ================================================================ */
 html.light{
-  --bg:#F4F5F7;
-  --paper:#FFFFFF;
-  --panel:#F0F1F3;
+  --bg:#F5F5F5;
+  --paper:#F5F5F5;
+  --panel:#F5F5F5;
   --ink:#1A1D23;
   --muted:#6B7280;
   --faint:#9CA3AF;
@@ -672,7 +672,7 @@ html.light .report-root .cta.ghost{background:var(--paper);border-color:var(--li
 html.light .report-root .cta.ghost:hover{border-color:var(--accent);color:var(--accent);background:rgba(124,107,255,.06)}
 
 /* plan section — stays on a tinted ground, not full inversion */
-html.light .report-root .plan-wrap{background:linear-gradient(180deg,#F0ECF9,#E8E4F5)}
+html.light .report-root .plan-wrap{background:#ECECEC}
 html.light .report-root .plan-wrap,
 html.light .report-root .plan-wrap h2,
 html.light .report-root .plan-wrap h3,

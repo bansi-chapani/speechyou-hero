@@ -258,8 +258,8 @@ i.band-good{background:var(--pass)} i.band-avg{background:var(--warn)} i.band-po
 .fdhead h2{font-size:clamp(20px,2.8vw,28px);color:var(--ink)}
 .fdhead p{margin-top:8px;color:var(--muted);font-size:14.5px;max-width:70ch}
 /* ---------- findings as accordions ---------- */
-/* findings: severity word, not a score. Violet is the system accent, so the
-   pill uses a violet-tinted plate and the hue only signals urgency. */
+/* findings: severity word, not a score. The system accent is white, so the
+   pill uses a glass plate and the hue only signals urgency. */
 .fsev{
   font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
   padding:6px 12px;border-radius:100px;white-space:nowrap;

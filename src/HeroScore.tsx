@@ -20,9 +20,12 @@ type Props = {
   variant?: "now" | "to";
   duration?: number;
   delay?: number;
+  /** the score can be quoted as a gap ("70 point gap") rather than a
+      fraction, in which case the "/100" denominator is dropped */
+  denominator?: boolean;
 };
 
-export default function HeroScore({ value, variant = "now", duration = 1100, delay = 0 }: Props) {
+export default function HeroScore({ value, variant = "now", duration = 1100, delay = 0, denominator = true }: Props) {
   const [n, setN] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const started = useRef(false);
@@ -63,7 +66,7 @@ export default function HeroScore({ value, variant = "now", duration = 1100, del
   return (
     <span ref={ref} className={`hero-score hero-score--${variant}`}>
       <span className="hero-score__num">{n}</span>
-      <span className="hero-score__den">/100</span>
+      {denominator && <span className="hero-score__den">/100</span>}
       <svg className="hero-score__rule" viewBox="0 0 120 14" preserveAspectRatio="none" aria-hidden="true">
         <path d={variant === "to" ? SQUIGGLE_B : SQUIGGLE_A}
               fill="none" strokeWidth="2.6" strokeLinecap="round" />

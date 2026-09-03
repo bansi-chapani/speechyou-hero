@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { ChevronDown, Infinity, Menu, X } from 'lucide-react';
 import ReportSections from './ReportSections';
 import HeroScore from './HeroScore';
 import { TextAnimate } from '@/components/ui/text-animate';
@@ -9,25 +8,10 @@ import { LiquidMetalButton } from '@/components/ui/liquid-metal-button';
 const BG_VIDEO =
   'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260511_230229_7c9bc431-46cf-489a-948d-e8144d8eb5d4.mp4';
 
-type NavLink = {
-  label: string;
-  active?: boolean;
-  dropdown?: boolean;
-  href?: string;
-};
-
-const navLinks: NavLink[] = [
-  { label: 'Overview', active: true, href: '#gaps' },
-  { label: 'Findings', dropdown: true, href: '#s1' },
-  { label: 'Action Plan', href: '#plan' },
-  { label: 'Contact', href: 'mailto:hello@nextbase.co?subject=SpeechYou%20growth%20report' },
-];
-
 const REPORT_URL = '#gaps';
 const CALL_URL = 'mailto:hello@nextbase.co?subject=SpeechYou%20growth%20report';
 
 export default function App() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [showFab, setShowFab] = useState(false);
 
   // Reveal the persistent booking CTA once the hero's own buttons scroll away,
@@ -53,94 +37,6 @@ export default function App() {
 
       {/* legibility scrim: the hero copy sits on live video */}
       <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/70 via-black/25 to-black/40 pointer-events-none" />
-
-      {/* ---------------- navbar ---------------- */}
-      <nav className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between site-pad py-5 sm:py-8">
-        <div className="flex items-center gap-2 text-white font-medium text-base">
-          <Infinity size={22} strokeWidth={1.5} />
-          <span>Nextbase</span>
-        </div>
-
-        <div className="liquid-glass hidden md:flex items-center gap-1 rounded-xl px-2 py-2">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className={`flex items-center gap-0.5 px-3 py-1.5 rounded-md text-sm transition-colors ${
-                link.active
-                  ? 'bg-white/15 text-white'
-                  : 'text-white/70 hover:text-white'
-              }`}
-            >
-              {link.label}
-              {link.dropdown && <ChevronDown size={13} className="mt-px" />}
-            </a>
-          ))}
-        </div>
-
-        <div className="hidden md:flex items-center gap-2.5">
-          <LiquidMetalButton
-            label="View Report"
-            variant="dark"
-            width={128}
-            height={40}
-            fontSize={13}
-            href={REPORT_URL}
-          />
-          <LiquidMetalButton
-            label="Book a Call"
-            variant="light"
-            width={128}
-            height={40}
-            fontSize={13}
-            href={CALL_URL}
-          />
-        </div>
-
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-          aria-expanded={menuOpen}
-          className="liquid-glass md:hidden text-white p-2 rounded-lg"
-        >
-          {menuOpen ? <X size={18} /> : <Menu size={18} />}
-        </button>
-      </nav>
-
-      {/* ---------------- mobile menu ---------------- */}
-      {menuOpen && (
-        <div className="absolute top-[84px] left-[var(--site-pad)] right-[var(--site-pad)] z-30 md:hidden liquid-glass rounded-2xl p-4 flex flex-col gap-1">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              className={`flex items-center justify-between w-full px-4 py-3 rounded-lg text-sm transition-colors ${
-                link.active
-                  ? 'bg-white/15 text-white'
-                  : 'text-white/70 hover:text-white'
-              }`}
-            >
-              {link.label}
-              {link.dropdown && <ChevronDown size={13} className="mt-px" />}
-            </a>
-          ))}
-          <div className="flex gap-2 mt-2 pt-3 border-t border-white/10">
-            <a
-              href={REPORT_URL}
-              className="liquid-glass flex-1 text-center text-white text-sm font-medium px-4 py-2.5 rounded-full hover:bg-white/5 transition-colors"
-            >
-              View Report
-            </a>
-            <a
-              href={CALL_URL}
-              className="flex-1 text-center bg-white text-black text-sm font-medium px-4 py-2.5 rounded-full hover:bg-white/90 transition-colors"
-            >
-              Book a Call
-            </a>
-          </div>
-        </div>
-      )}
 
       {/* ---------------- hero content ---------------- */}
       <div className="absolute bottom-0 left-0 right-0 z-20 site-pad pb-14 sm:pb-24">
@@ -168,20 +64,32 @@ export default function App() {
             className="inline"
             segmentClassName="inline-block whitespace-pre"
           >
-            Your growth engine is at
+            SpeechYou has a
           </TextAnimate>{' '}
-          <HeroScore value={52} />
+          <HeroScore value={70} denominator={false} />{' '}
+          <TextAnimate
+            as="span"
+            by="word"
+            animation="blurInUp"
+            once
+            accessible={false}
+            duration={0.8}
+            delay={0.35}
+            className="inline"
+            segmentClassName="inline-block whitespace-pre"
+          >
+            point growth gap. We found where it is coming from.
+          </TextAnimate>
         </h1>
 
         {/* Summary carries the actual findings, not a description of the
             report. Every figure here is read from finding-scores.json. */}
         <p className="text-white/75 text-[13px] leading-relaxed mb-7 max-w-lg">
-          We scored 8 areas of SpeechYou&rsquo;s marketing. The product
-          isn&rsquo;t the problem &mdash; distribution is. You have a presence
-          on <strong className="text-white/95 font-medium">4 of 11</strong> channels,
-          keywords already ranking at{' '}
-          <strong className="text-white/95 font-medium">#10&ndash;16</strong> with no
-          pages built for them, and demand on Reddit and Quora going uncaptured.
+          SpeechYou already has a product people need. But potential customers
+          are missing it at three critical moments: when they search for
+          format-specific transcription tools, when they ask for
+          recommendations in public communities, and when they reach the
+          signup decision.
         </p>
 
         {/* "Book a call" is the commercial action, so it takes the light

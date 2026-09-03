@@ -146,11 +146,11 @@ export function CtaWithTextMarquee() {
           </div>
 
           <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-medium leading-tight tracking-tight mb-5">
-            Get started in a call
+            We can help you execute the entire plan end to end.
           </h2>
 
           <p className="text-white/60 text-[15px] leading-relaxed mb-8 max-w-md">
-            We can help you execute the entire plan end to end.
+            Get started in a call
           </p>
 
           <div className="flex flex-wrap items-center gap-3">

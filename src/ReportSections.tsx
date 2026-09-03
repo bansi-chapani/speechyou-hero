@@ -39,8 +39,8 @@ function ReportSections() {
       if (push) history.replaceState(null, '', '#' + secId);
     };
 
-    // overview row -> jump to + open the matching finding
-    const rows = Array.from(root.querySelectorAll<HTMLButtonElement>('.ovc'));
+    // overview row / stat card -> jump to + open the matching finding
+    const rows = Array.from(root.querySelectorAll<HTMLButtonElement>('.ovc, .stat-card'));
     const onRow = (e: Event) => {
       const t = (e.currentTarget as HTMLElement).dataset.target;
       if (t) openFinding(t, true);
@@ -72,6 +72,13 @@ function ReportSections() {
       if (el.id === 'ovlist') {
         Array.from(el.children).forEach((c, i) => {
           (c as HTMLElement).style.transitionDelay = `${i * 55}ms`;
+          c.classList.add('rise');
+        });
+      }
+      // stat-cards: stagger each card in
+      if (el.classList.contains('stat-cards')) {
+        Array.from(el.querySelectorAll('.stat-card')).forEach((c, i) => {
+          (c as HTMLElement).style.transitionDelay = `${i * 65}ms`;
           c.classList.add('rise');
         });
       }
@@ -109,7 +116,7 @@ function ReportSections() {
         }),
       { threshold: 0.05, rootMargin: '0px 0px -30px 0px' },
     );
-    root.querySelectorAll('.rv, .sec, .viz, #ovlist').forEach((el) => {
+    root.querySelectorAll('.rv, .sec, .viz, .stat-cards, #ovlist').forEach((el) => {
       el.classList.add('rv');
       rv.observe(el);
     });

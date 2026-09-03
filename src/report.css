@@ -472,8 +472,7 @@ i.band-good{background:var(--pass)} i.band-avg{background:var(--warn)} i.band-po
 blockquote{border-left:0;padding:16px 20px;margin:16px 0;border-radius:var(--r);
  background:var(--accent-10);color:var(--brand-ink,var(--hi));font-size:15.5px;
  position:relative}
-blockquote::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:3px;
- border-radius:var(--r-pill);background:var(--accent)}
+blockquote::before{display:none}
 
 /* tables get a tinted header so they read as data, not more prose */
 .tbl .tr.hd{background:var(--accent-10)}

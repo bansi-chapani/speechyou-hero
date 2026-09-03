@@ -1,0 +1,66 @@
+/* ============================================================
+   Hero headline scores
+   Two numbers out of 100, under hand-drawn rules. Emphasis is
+   weight + the rule, not a colour fill: the headline sits on
+   live video and a saturated number fights the footage instead
+   of reading as a fact.
+   ============================================================ */
+.hero-score{
+  position: relative;
+  display: inline-block;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  color: #fff;
+  padding-bottom: 0.06em;
+}
+/* tabular figures still reflow slightly while counting 0->52, so the
+   number reserves a fixed box and nothing after it shifts mid-count */
+.hero-score__num{
+  display: inline-block;
+  min-width: 1.2em;
+  text-align: right;
+}
+.hero-score__den{
+  font-size: 0.46em;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  /* 0.62 measured 4.75:1 on the video backplate. At 0.45 it was
+     3.03:1 — the WCAG large-text floor exactly, on a moving plate. */
+  opacity: 0.62;
+  color: #fff;
+  margin-left: 0.06em;
+  vertical-align: baseline;
+}
+
+/* hand-drawn rule, stretched to the score's width */
+.hero-score__rule{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.13em;
+  width: 100%;
+  height: 0.22em;
+  overflow: visible;
+  pointer-events: none;
+}
+.hero-score__rule path{ stroke: rgba(255,255,255,0.5); }
+
+/* the arrow carries the whole argument — today -> achievable — so it
+   sits quieter than either number and lets them do the talking */
+.hero-score-sep{
+  /* 0.38 measures 16.7:1 on ink pixels — quiet by design, not by accident.
+     (An earlier 1.27:1 reading was a bad measurement: the glyph is 2% of its
+     box, so quartile-averaging drowned the ink in background.) */
+  color: rgba(255,255,255,0.38);
+  font-weight: 400;
+  letter-spacing: 0;
+  padding: 0 0.04em;
+}
+
+/* the achievable score takes the page's single accent, so the jump
+   52 -> 86 is legible at a glance. The "/100" stays white so the
+   scale reads as one consistent unit on both numbers. */
+.hero-score--to{ color: #8FE9C0; }
+.hero-score--to .hero-score__rule path{ stroke: rgba(143,233,192,0.72); }

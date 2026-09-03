@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- single source of truth for the site gutter ----------
+   One token drives BOTH the hero (React/Tailwind) and the report (generated
+   CSS). Previously the two drifted (nav 32 / hero 48 / report 250) which is
+   what read as inconsistent.
+
+   400px is the desktop target. It cannot be a flat 400 at every width or the
+   content column collapses (at 1440 a 400px gutter leaves only 640px), so it
+   ramps: full 400 on wide screens, scaling down below. */
+:root{
+  /* mobile/tablet keep a readable column; the 400px target applies where
+     there is room for it (>=1600px). A flat 400 on a 390px phone would
+     leave 226px of content, so the ramp is stepped, not linear. */
+  --site-pad: 24px;
+}
+@media (min-width: 640px){  :root{ --site-pad: 48px; } }
+@media (min-width: 1024px){ :root{ --site-pad: 96px; } }
+@media (min-width: 1280px){ :root{ --site-pad: 160px; } }
+@media (min-width: 1600px){ :root{ --site-pad: 220px; } }
+@media (min-width: 1900px){ :root{ --site-pad: 260px; } }
+.site-pad{ padding-left:var(--site-pad); padding-right:var(--site-pad); }
+
+
+* {
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.01);
+  background-blend-mode: luminosity;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(255, 255, 255, 0.15) 20%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0.15) 80%,
+    rgba(255, 255, 255, 0.45) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}

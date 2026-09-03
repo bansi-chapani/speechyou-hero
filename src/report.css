@@ -492,9 +492,10 @@ blockquote::before{content:"";position:absolute;left:0;top:10px;bottom:10px;widt
  border-radius:2px;background:var(--accent)}
 
 /* the part mini-nav reads as a control strip */
-.pnav{background:var(--ink)}
-.pnav-i{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16);color:var(--paper)}
-.pnav-i:hover{background:rgba(255,255,255,.13);border-color:var(--accent)}
+.pnav{background:rgba(16,18,23,.95)}
+.pnav-i{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16);color:rgba(255,255,255,.85)}
+.pnav-i:hover{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.35)}
+.pnav-i .pn{color:rgba(255,255,255,.5)}
 
 /* file card gets accent weight */
 .file{background:var(--accent-10);border-color:var(--accent-30)}

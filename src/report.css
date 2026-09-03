@@ -288,7 +288,7 @@ i.band-good{background:var(--pass)} i.band-avg{background:var(--warn)} i.band-po
 .fd.flash .fsum{animation:flash 1.5s var(--ease)}
 .sec{scroll-margin-top:18px}
 @media(max-width:560px){
-  .fsum{grid-template-columns:26px minmax(0,1fr) auto;gap:6px 10px}
+  .fsum{grid-template-columns:minmax(0,1fr) auto;gap:6px 10px}
 }
 
 /* ---------- illustrations (style measured from the reference: flat vector,

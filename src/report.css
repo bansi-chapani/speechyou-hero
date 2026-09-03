@@ -430,10 +430,11 @@ i.band-good{background:var(--pass)} i.band-avg{background:var(--warn)} i.band-po
    left-right and scrambles the order, so this is a single ranked column. */
 .plan-wrap .ul{margin-top:clamp(24px,3.4vw,36px);
  display:grid;grid-template-columns:1fr;gap:0;
- border-top:1px solid rgba(255,255,255,.14)}
+ border-top:none}
 .plan-wrap .ul li{background:none;color:rgba(255,255,255,.78);
- font-size:15px;line-height:1.6;margin:0;padding:18px 0;position:relative;
- border-bottom:1px solid rgba(255,255,255,.14);max-width:none}
+ font-size:15px;line-height:1.6;margin:0;padding:14px 0;position:relative;
+ border-bottom:none;max-width:none;padding-left:0}
+.plan-wrap .ul li::before{display:none}
 .plan-wrap .ul li strong,.plan-wrap .ul li b{color:var(--paper)}
 @media(max-width:560px){
   .plan-wrap .ul li{padding-left:44px;font-size:14.5px}
@@ -604,7 +605,7 @@ table thead th{background:rgba(255,255,255,.05)}
    explicitly set to full white so the category labels are visible. */
 .plan-wrap,.plan-wrap h2,.plan-wrap h3,.plan-wrap p{color:var(--ink)}
 .plan-wrap .ul li{color:rgba(255,255,255,.55)}
-.plan-wrap .ul li strong,.plan-wrap .ul li b{color:#FFFFFF;font-weight:600;display:block;margin-bottom:4px}
+.plan-wrap .ul li strong,.plan-wrap .ul li b{color:#FFFFFF;font-weight:600;display:inline}
 .plan-wrap .muted,.plan-wrap .sub{color:var(--muted)}
 /* poor/critical score text needs lifting on dark (was 4.22:1) */
 .band-poor{color:#F2849B}

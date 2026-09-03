@@ -433,7 +433,8 @@ i.band-good{background:var(--pass)} i.band-avg{background:var(--warn)} i.band-po
  border-top:1px solid rgba(255,255,255,.14)}
 .plan-wrap .ul li{background:none;color:rgba(255,255,255,.78);
  font-size:15px;line-height:1.6;margin:0;padding:14px 0;position:relative;
- border-bottom:1px solid rgba(255,255,255,.14);max-width:none}
+ border-bottom:1px solid rgba(255,255,255,.14);max-width:none;padding-left:0}
+.plan-wrap .ul li::before{display:none}
 .plan-wrap .ul li strong,.plan-wrap .ul li b{color:var(--paper)}
 @media(max-width:560px){
   .plan-wrap .ul li{padding-left:44px;font-size:14.5px}
